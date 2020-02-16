@@ -1,7 +1,6 @@
 # GitHub-Issue-Timelines
- 
-Originially a private project here: https://github.com/pauliver/IRL-StatusReport 
 
+[![Build .NET Core App](https://github.com/pauliver/GitHub-Issue-Timelines/workflows/Build%20.NET%20Core%20App/badge.svg)](https://github.com/pauliver/GitHub-Issue-Timelines/actions?query=workflow%3A%22Build+.NET+Core+App%22)
 
 ```yml
 name: IRL Schedule Builder
@@ -40,3 +39,4 @@ jobs:
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
+*Originially a private project here: https://github.com/pauliver/IRL-StatusReport*
