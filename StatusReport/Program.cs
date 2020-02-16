@@ -149,8 +149,8 @@ namespace StatusReport
             string BuildComment = PAULSWARNING + Environment.NewLine + Environment.NewLine;
             string Build_Comment_Finished = "";
 
-            {
-                string repo_name = args[3]; //"Developer-Relations" 
+            string repo_name = args[3]; //"Developer-Relations"
+            { 
                 FollowUpActions.Sort(CompareDates);
 
                 {
