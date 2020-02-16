@@ -101,7 +101,8 @@ namespace StatusReport
             }
 
             Console.WriteLine("Loading github...");
-            string secretkey = Environment.GetEnvironmentVariable("GITHUB_TOKEN");
+            string secretkey = Environment.GetEnvironmentVariable("GITHUB_TOKEN"); //or is it secrets.GITHUB_TOKEN
+            
             var github = new GitHubClient(new ProductHeaderValue("Pauliver-StatusReport"))
             {
                 Credentials = new Credentials(secretkey)
