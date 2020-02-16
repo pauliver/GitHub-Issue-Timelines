@@ -7,16 +7,18 @@ name: IRL Schedule Builder
 on:
   issues:
      types: [opened,edited]
-
+  schedule:
+  - cron: 01 00 * * 1
+  
 jobs:
   build:
     runs-on: windows-latest
     strategy:
       matrix:
         dotnet: [ '2.1.802' ]
-    name: Dotnet ${{ matrix.dotnet }} ImageCompression
+    name: Dotnet ${{ matrix.dotnet }} IRL-Status
     steps:
-      - name: Checkout Status Report Tool
+      - name: Checkout Image Tools
         uses: actions/checkout@v2
         with:
           repository: pauliver/GitHub-Issue-Timelines
@@ -30,13 +32,10 @@ jobs:
       - name: Restore Dependancies
         run: dotnet restore IRLIssue/
 
-      - name: Build Status Report Tool
+      - name: Build Status Parsing Tools
         run: dotnet build IRLIssue/ --configuration Release
       
-      - name: Run Status Report Tool
-        run: dotnet  .\bin\Release\netcoreapp2.1\StatusReport.dll   ${{ secrets.NEW_TOKEN }} ORG Repo1 Repo2
-          path: IRLIssue
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run the Status Parsing Tools
+        run: dotnet D:\a\REPO\REPO\IRLIssue\StatusReport\bin\Release\netcoreapp2.1\StatusReport.dll "${{ secrets.GITHUB_TOKEN }}" OWNER REPO REPO
 ```
 *Originially a private project here: https://github.com/pauliver/IRL-StatusReport*
