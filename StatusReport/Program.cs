@@ -42,7 +42,7 @@ namespace StatusReport
 
 
             Console.WriteLine("Looking for an issue titiled:" + TopFiveText);
-            bool IssueFound = false;
+            bool issueFound = false;
             if (GitHubRepo_Issues.Count > 0)
             {
                 foreach (Issue i in GitHubRepo_Issues)
