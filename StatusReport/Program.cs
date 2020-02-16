@@ -86,7 +86,7 @@ namespace StatusReport
                 int issuenumber;
                 {
                 var createIssue = new NewIssue(TopFiveText);
-                var NewlyCreatedIssue = await github.Issue.Create(repo_name, repo_owner, createIssue);
+                var NewlyCreatedIssue = await github.Issue.Create( repo_owner, repo_name, createIssue);
                 issueupdate = NewlyCreatedIssue.ToUpdate();
                 issuenumber = NewlyCreatedIssue.Number;
                 }
