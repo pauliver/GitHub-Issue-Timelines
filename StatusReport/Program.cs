@@ -101,11 +101,12 @@ namespace StatusReport
             }
 
             Console.WriteLine("Loading github...");
-            string secretkey = Environment.GetEnvironmentVariable("secrets.GITHUB_TOKEN"); //or is it secrets.GITHUB_TOKEN
+            
+            //string secretkey = Environment.GetEnvironmentVariable("secrets.GITHUB_TOKEN"); //or is it secrets.GITHUB_TOKEN
             
             var github = new GitHubClient(new ProductHeaderValue("Pauliver-StatusReport"))
             {
-                Credentials = new Credentials(secretkey)
+                Credentials = new Credentials(args[1])
             };
 
 
@@ -114,10 +115,10 @@ namespace StatusReport
             List<KeyValuePair<DateTime, String>> FollowUpActions = new List<KeyValuePair<DateTime, string>>();
 
 
+            string repo_owner = args[1]; //"GitHub";
             { // IRL issues
 
-                string repo_owner = "GitHub";
-                string repo_name = "IRL";
+                string repo_name = args[2]; //"IRL";
 
                 var IRLRepo_Issues = await github.Issue.GetAllForRepository(repo_owner, repo_name);
 
@@ -149,6 +150,7 @@ namespace StatusReport
             string Build_Comment_Finished = "";
 
             {
+                string repo_name = args[3]; //"Developer-Relations" 
                 FollowUpActions.Sort(CompareDates);
 
                 {
@@ -175,7 +177,7 @@ namespace StatusReport
 
 
             string TopFiveText = "TOP 5 Week " + (string)TimeHelpers.GetIso8601WeekOfYear(System.DateTime.Now).ToString();
-            await AppendTopFiveAsync(github, "GitHub", "Developer-Relations", TopFiveText, PAULSWARNING, BuildComment);
+            await AppendTopFiveAsync(github, repo_owner, repo_name, TopFiveText, PAULSWARNING, BuildComment);
             
         }
     }
