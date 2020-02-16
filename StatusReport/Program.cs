@@ -80,29 +80,9 @@ namespace StatusReport
 
         static async System.Threading.Tasks.Task Main(string[] args)
         {
-            if (false)
-            {
-
-                var auth = new Salesforce.Common.AuthenticationClient();
-
-                // https://github.my.salesforce.com/home/home.jsp
-
-                string SecurityToken = "";
-
-                await auth.UsernamePasswordAsync("YOURCONSUMERKEY", "YOURCONSUMERSECRET", "", "YOURPASSWORD");
-
-                // https://support.veeva.com/hc/en-us/articles/360006272734-How-to-Obtain-a-Consumer-Key-and-Secret-of-Connected-App-in-CRM-
-                // https://success.salesforce.com/answers?id=9063A000000DhFPQA0
-
-
-                // https://github.com/octokit/octokit.net
-                // https://docs.microsoft.com/en-us/graph/integrate-with-onenote
-                // https://docs.microsoft.com/en-us/graph/permissions-reference
-            }
-
             Console.WriteLine("Loading github...");
             
-            string secretkey = Environment.GetEnvironmentVariable("GITHUB_TOKEN"); //or is it secrets.GITHUB_TOKEN
+            //string secretkey = Environment.GetEnvironmentVariable("GITHUB_TOKEN"); //or is it secrets.GITHUB_TOKEN
             
             var github = new GitHubClient(new ProductHeaderValue("Pauliver-StatusReport"))
             {
