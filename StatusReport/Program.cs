@@ -42,7 +42,7 @@ namespace StatusReport
 
 
             Console.WriteLine("Looking for an issue titiled:" + TopFiveText);
-            
+            bool IssueFound = false;
             if (GitHubRepo_Issues.Count > 0)
             {
                 foreach (Issue i in GitHubRepo_Issues)
@@ -68,7 +68,7 @@ namespace StatusReport
                         {
                             await github.Issue.Comment.Create(repo_owner, repo_name, i.Number, BuildComment);
                         }
-
+                        issueFound = true;
                     }
 
                 }
@@ -77,7 +77,22 @@ namespace StatusReport
             {
                 Console.WriteLine("No Issues Retrived");
             }
-
+            
+            if(!issueFound)
+            {
+                Console.WriteLine("Issue never found: Creating one");
+                
+                IssueUpdate issueupdate;
+                int issuenumber;
+                {
+                var createIssue = new NewIssue(TopFiveText);
+                var NewlyCreatedIssue = await github.Issue.Create(repo_name, repo_owner, createIssue);
+                issueupdate = NewlyCreatedIssue.ToUpdate();
+                issuenumber = NewlyCreatedIssue.Number;
+                }
+                issueupdate.Body = BuildComment;
+                await github.Issue.Update(repo_owner, repo_name, issuenumber, issueupdate);
+            }
         }
 
         static async System.Threading.Tasks.Task Main(string[] args)
