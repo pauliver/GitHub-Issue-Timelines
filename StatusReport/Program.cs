@@ -116,9 +116,9 @@ namespace StatusReport
 
 
             string repo_owner = args[1]; //"GitHub";
+            string repo_name = args[2]; //"IRL";
             { // IRL issues
 
-                string repo_name = args[2]; //"IRL";
 
                 var IRLRepo_Issues = await github.Issue.GetAllForRepository(repo_owner, repo_name);
 
@@ -149,8 +149,8 @@ namespace StatusReport
             string BuildComment = PAULSWARNING + Environment.NewLine + Environment.NewLine;
             string Build_Comment_Finished = "";
 
-            string repo_name = args[3]; //"Developer-Relations"
             { 
+                repo_name = args[3]; //"Developer-Relations"
                 FollowUpActions.Sort(CompareDates);
 
                 {
