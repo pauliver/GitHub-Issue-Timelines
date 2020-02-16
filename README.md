@@ -15,7 +15,7 @@ jobs:
         dotnet: [ '2.1.802' ]
     name: Dotnet ${{ matrix.dotnet }} ImageCompression
     steps:
-      - name: Checkout Image Tools
+      - name: Checkout Status Report Tool
         uses: actions/checkout@v2
         with:
           repository: pauliver/GitHub-Issue-Timelines
@@ -29,10 +29,10 @@ jobs:
       - name: Restore Dependancies
         run: dotnet restore IRLIssue/
 
-      - name: Build Image Tools
+      - name: Build Status Report Tool
         run: dotnet build IRLIssue/ --configuration Release
       
-      - name: Run the IRL Script
-        run: dotnet  D:\a\Pauliver.com\Pauliver.com\IRLIssue\bin\Release\netcoreapp3.1\StatusReport.dll  
+      - name: Run Status Report Tool
+        run: dotnet  D:\a\Pauliver.com\Pauliver.com\IRLIssue\bin\Release\netcoreapp2.1\StatusReport.dll  
 
 ```
