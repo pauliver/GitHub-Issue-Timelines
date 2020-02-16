@@ -33,6 +33,7 @@ jobs:
         run: dotnet build IRLIssue/ --configuration Release
       
       - name: Run Status Report Tool
-        run: dotnet  D:\a\Pauliver.com\Pauliver.com\IRLIssue\bin\Release\netcoreapp2.1\StatusReport.dll  
+        run: dotnet  .\bin\Release\netcoreapp2.1\StatusReport.dll  
+          path: IRLIssue
 
 ```
