@@ -41,6 +41,8 @@ namespace StatusReport
             var GitHubRepo_Issues = await github.Issue.GetAllForRepository(repo_owner, repo_name);
 
 
+            Console.WriteLine("Looking for an issue titiled:" + TopFiveText);
+            
             if (GitHubRepo_Issues.Count > 0)
             {
                 foreach (Issue i in GitHubRepo_Issues)
