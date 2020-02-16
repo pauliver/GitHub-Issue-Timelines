@@ -36,6 +36,6 @@ jobs:
         run: dotnet build IRLIssue/ --configuration Release
       
       - name: Run the Status Parsing Tools
-        run: dotnet D:\a\REPO\REPO\IRLIssue\StatusReport\bin\Release\netcoreapp2.1\StatusReport.dll "${{ secrets.GITHUB_TOKEN }}" OWNER REPO REPO
+        run: dotnet D:\a\${{REPO}}\${{REPO}}\IRLIssue\StatusReport\bin\Release\netcoreapp2.1\StatusReport.dll "${{ secrets.GITHUB_TOKEN }}" OWNER REPO REPO
 ```
 *Originially a private project here: https://github.com/pauliver/IRL-StatusReport*
