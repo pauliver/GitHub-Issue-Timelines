@@ -106,7 +106,7 @@ namespace StatusReport
             
             var github = new GitHubClient(new ProductHeaderValue("Pauliver-StatusReport"))
             {
-                Credentials = new Credentials(args[1])
+                Credentials = new Credentials(args[0])
             };
 
 
