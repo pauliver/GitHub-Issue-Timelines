@@ -35,5 +35,6 @@ jobs:
       - name: Run Status Report Tool
         run: dotnet  .\bin\Release\netcoreapp2.1\StatusReport.dll  
           path: IRLIssue
-
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
 ```
