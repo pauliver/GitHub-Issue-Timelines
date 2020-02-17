@@ -18,7 +18,7 @@ jobs:
         dotnet: [ '2.1.802' ]
     name: Dotnet ${{ matrix.dotnet }} IRL-Status
     steps:
-      - name: Checkout Image Tools
+      - name: Checkout Status Parsing Tools
         uses: actions/checkout@v2
         with:
           repository: pauliver/GitHub-Issue-Timelines
